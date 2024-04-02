@@ -9,7 +9,7 @@ interface BifrostProps {
 }
 
 export interface BifrostRef {
-  sendMessageToWebView: (message: any) => void;
+  sendMessageToWebView: (message: BifrostMessage) => void;
 }
 
 const Bifrost = React.forwardRef<BifrostRef, BifrostProps>((props, ref) => {
@@ -17,7 +17,7 @@ const Bifrost = React.forwardRef<BifrostRef, BifrostProps>((props, ref) => {
   const webViewRef = useRef<WebView>(null);
 
   useImperativeHandle(ref, () => ({
-    sendMessageToWebView: (message: any) => {
+    sendMessageToWebView: (message: BifrostMessage) => {
       if (webViewRef.current) {
         const jsonMessage = JSON.stringify(message);
         webViewRef.current.injectJavaScript(`

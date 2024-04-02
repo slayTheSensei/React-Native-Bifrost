@@ -7,6 +7,12 @@ export interface BifrostWindow {
   ReactNativeWebView: BifrostWebView;
 }
 
+export interface BifrostMessage {
+  type: string;
+  payload: any;
+  metadata?: Record<string, any>;
+}
+
 export const getBifrostWebView = () => {
   const w = window as unknown as BifrostWindow;
   return w.ReactNativeWebView;
