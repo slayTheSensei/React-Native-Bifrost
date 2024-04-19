@@ -54,6 +54,7 @@ const Bifrost = React.forwardRef<BifrostRef, BifrostProps>((props, ref) => {
         setWebContentsDebuggingEnabled={true}
         startInLoadingState={true}
         style={styles.webview}
+        scrollEnabled={false}
       />
     </View>
   );

@@ -50,25 +50,39 @@ export default function App() {
     });
   }, []);
 
+  const isMobile = window.ReactNativeWebView;
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>{message}</Text>
-      <Button
-        title="Send Message to Mobile"
-        onPress={() =>
-          sendBifrostMessage({
-            type: 'microfrontend-message',
-            data: 'Hello from Web!',
-          })
-        }
-      />
-      <View style={{ marginVertical: 10 }}>
-        <Button title="Request Camera Access" onPress={requestCameraAccess} />
+    <>
+      <View style={styles.container}>
+        <Text style={styles.text}>{message}</Text>
+        {isMobile && (
+          <Button
+            title="Send Message to Mobile"
+            onPress={() =>
+              sendBifrostMessage({
+                type: 'microfrontend-message',
+                data: 'Hello from Web!',
+              })
+            }
+          />
+        )}
+        <View style={styles.buttonContainer}>
+          <Button title="Request Camera Access" onPress={requestCameraAccess} />
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button
+            title="Request Mic Access"
+            onPress={requestMicrophoneAccess}
+          />
+        </View>
       </View>
-      <View style={{ marginVertical: 10 }}>
-        <Button title="Request Mic Access" onPress={requestMicrophoneAccess} />
-      </View>
-    </View>
+      {isMobile && (
+        <View style={styles.labelContainer}>
+          <Text style={{ color: 'white' }}>Web</Text>
+        </View>
+      )}
+    </>
   );
 }
 
@@ -79,4 +93,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text: { height: 20, marginBottom: 10 },
+  buttonContainer: { marginVertical: 10 },
+  labelContainer: {
+    backgroundColor: 'blue',
+    width: 60,
+    alignSelf: 'flex-start',
+    alignItems: 'center',
+    marginBottom: 5,
+    marginLeft: 5,
+    padding: 3,
+  },
 });

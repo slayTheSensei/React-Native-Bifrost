@@ -39,14 +39,30 @@ export default function App() {
         />
       </View>
       <View style={styles.mobile}>
-        <Text style={{ height: 20, marginBottom: 10 }}>{message}</Text>
-        <View style={{ backgroundColor: 'darkgrey' }}>
-          <Button
-            color={'white'}
-            title="Send Message to Web"
-            onPress={handleSendMessage}
-          />
-        </View>
+        <>
+          <View style={styles.labelContainer}>
+            <Text style={{ color: 'white' }}>Mobile</Text>
+          </View>
+
+          <View
+            style={{
+              alignContent: 'center',
+              justifyContent: 'center',
+              flex: 1,
+            }}
+          >
+            <Text style={{ height: 20, marginBottom: 10, alignSelf: 'center' }}>
+              {message}
+            </Text>
+            <View style={{ backgroundColor: 'darkgrey', alignItems: 'center' }}>
+              <Button
+                color={'white'}
+                title="Send Message to Web"
+                onPress={handleSendMessage}
+              />
+            </View>
+          </View>
+        </>
       </View>
     </SafeAreaView>
   );
@@ -59,14 +75,22 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   web: {
-    flex: 1,
+    flex: 2,
     width: '100%',
   },
   mobile: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
     width: '100%',
     backgroundColor: 'lightgray',
+  },
+  labelContainer: {
+    backgroundColor: 'black',
+    width: 60,
+    alignSelf: 'flex-start',
+    alignItems: 'center',
+    marginTop: 5,
+    marginLeft: 5,
+    padding: 3,
   },
 });
