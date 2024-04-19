@@ -1,7 +1,6 @@
 import React, { useRef, useImperativeHandle } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { WebView } from 'react-native-webview';
-import { getBifrostWebView } from './helpers';
 
 interface BifrostProps {
   url: string;
@@ -81,14 +80,14 @@ interface BifrostMessage {
   data: any;
 }
 
-export const sendBifrostMessage = async (message: BifrostMessage) => {
-  const webview = await getBifrostWebView();
-  if (webview) {
-    await webview.postMessage(
-      JSON.stringify({
-        type: message.type,
-        data: message.data,
-      })
-    );
-  }
-};
+// export const sendBifrostMessage = async (message: BifrostMessage) => {
+//   const webview = await getBifrostWebView();
+//   if (webview) {
+//     await webview.postMessage(
+//       JSON.stringify({
+//         type: message.type,
+//         data: message.data,
+//       })
+//     );
+//   }
+// };

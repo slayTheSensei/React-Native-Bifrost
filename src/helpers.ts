@@ -13,7 +13,7 @@ export interface BifrostMessage {
   metadata?: Record<string, any>;
 }
 
-export const getBifrostWebView = () => {
-  const w = window as unknown as BifrostWindow;
-  return w.ReactNativeWebView;
-};
+// export const getBifrostWebView = () => {
+//   const w = window as unknown as BifrostWindow;
+//   return w.ReactNativeWebView;
+// };
